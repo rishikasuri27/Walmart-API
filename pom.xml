@@ -70,6 +70,7 @@
 					</execution>
 				</executions>
 				<configuration>
+				<runtimeVersion>${app.runtime}</runtimeVersion>
 					<coverage>
 						<runCoverage>true</runCoverage>
 						<formats>
