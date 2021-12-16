@@ -1,46 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
-	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xsi:schemaLocation="
-		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
-		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
-	<munit:config name="walmart_usecase_api-test-suite.xml" />
-	<munit:test name="walmart_usecase_api-test-suite-walmart_usecase_api-mainTest" doc:id="c74ac31b-1a61-4b5d-810c-911bbd834608" description="Test">
-		<munit:execution>
-			<munit:set-event doc:name="Set Event" doc:id="2f3e03bd-ca80-4b37-b8ec-f2ad65698433" >
-				<munit:attributes value='#[{"queryParams":{"usItemId":55885487}}]' />
-			</munit:set-event>
-			<flow-ref doc:name="Flow Reference" doc:id="86f1725a-8a20-4525-90ae-a2e988971e0b" name="getProductDetails"/>
-		</munit:execution>
-		<munit:validation >
-			<munit-tools:assert-that doc:name="Assert that" doc:id="94f0022b-2290-45bb-95a9-6d2d8d86b3f2" is="#[MunitTools::notNullValue()]" message="payload is null" expression="#[payload]"/>
-		</munit:validation>
-	</munit:test>
-	<munit:test name="walmart_usecase_api-test-suiteTest" doc:id="0bdc136d-cb6e-4d51-818c-a57ea867e042" >
-		<munit:execution >
-			<munit:set-event doc:name="Set Event" doc:id="1639f906-985b-4e7d-9798-ca2724aefb08" >
-				<munit:payload value='{&#10;&#10;  "order_id": 162,&#10;&#10;  "store_id": 121,&#10;&#10;  "store_name": "Store121",&#10;&#10;  "store_address": "Address121",&#10;&#10;  "store_Distance": 23,&#10;&#10;  "store_contact_no": "1111111111",&#10;&#10;  "product_type_id": 323,&#10;&#10;  "quantity": 1&#10;&#10;}' />
-			</munit:set-event>
-			<flow-ref doc:name="Flow Reference" doc:id="6cbeb68c-b0f7-489e-9516-cf877eb36cc6" name="postProductDetails"/>
-		</munit:execution>
-		<munit:validation >
-			<munit-tools:assert-that doc:name="Assert that" doc:id="deb1db4f-ae20-4d27-a459-729e9b60e2a8" is="#[MunitTools::notNullValue()]" expression='#[!(payload contains "Could not insert data")]' message="faced issue"/>
-		</munit:validation>
-	</munit:test>
-	<munit:test name="walmart_usecase_api-test-suiteTest1" doc:id="75fcd32b-5122-482d-aab0-24c6e654a951" >
-		<munit:execution >
-			<munit:set-event doc:name="Set Event" doc:id="821c3abb-0f57-4f9d-a06a-8c41b318f2f0" >
-				<munit:attributes value='#[{"queryParams":{"postalCode":75204}}]' />
-			</munit:set-event>
-			<flow-ref doc:name="Flow Reference" doc:id="61794d93-5513-441f-acdf-6bddbb5c4d92" name="getNearbyStore"/>
-		</munit:execution>
-		<munit:validation >
-			<munit-tools:assert-that doc:name="Assert that" doc:id="2b1d3760-cf02-4063-80c5-7390a818302a" is="#[MunitTools::notNullValue()]" message="payload is not null" expression="#[payload]"/>
-		</munit:validation>
-	</munit:test>
-
-
-</mule>
