@@ -6,7 +6,6 @@
 	<artifactId>walmart-api</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
-
 	<name>walmart-api</name>
 
 	<properties>
@@ -31,28 +30,12 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-					<cloudHubDeployment>
-						<uri>https://anypoint.mulesoft.com</uri>
-						<muleVersion>${muleVersion}</muleVersion>
-						<username>${username}</username>
-						<password>${password}</password>
-						<applicationName>${applicationName}</applicationName>
-						<environment>${environment}</environment>
-						<businessGroup>${businessGroup}</businessGroup>
-						<workerType>${workerType}</workerType>
-						<objectStoreV2>true</objectStoreV2>
-						<properties>
-							<anypoint.platform.client_id>${anypoint.platform.client_id}</anypoint.platform.client_id>
-							<anypoint.platform.client_secret>${anypoint.platform.client_secret}</anypoint.platform.client_secret>
-						</properties>
-					</cloudHubDeployment>
 					<sharedLibraries>
 						<sharedLibrary>
 							<groupId>mysql</groupId>
 							<artifactId>mysql-connector-java</artifactId>
 						</sharedLibrary>
 					</sharedLibraries>
-					<classifier>mule-application</classifier>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -69,6 +52,7 @@
 						</goals>
 					</execution>
 				</executions>
+				
 				<configuration>
 				<runtimeVersion>${app.runtime}</runtimeVersion>
 					<coverage>
@@ -112,7 +96,7 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.48</version>
 		</dependency>
-		<dependency>
+	<!-- 	<dependency>
 			<groupId>com.mulesoft.munit</groupId>
 			<artifactId>munit-runner</artifactId>
 			<version>2.3.6</version>
@@ -121,17 +105,11 @@
 		</dependency>
 		<dependency>
 			<groupId>com.mulesoft.munit</groupId>
-			<artifactId>munit-remote</artifactId>
-			<version>2.3.6</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.mulesoft.munit</groupId>
 			<artifactId>munit-tools</artifactId>
 			<version>2.3.6</version>
 			<classifier>mule-plugin</classifier>
 			<scope>test</scope>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>org.mule.weave</groupId>
 			<artifactId>assertions</artifactId>
